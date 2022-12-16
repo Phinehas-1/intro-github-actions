@@ -9,3 +9,6 @@ class Clock {
         this.clock_container?.appendChild(time);
     }
 }
+
+let clock = new Clock();
+clock.showTime();
