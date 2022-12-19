@@ -35,4 +35,5 @@ jobs:
         git commit -a -m 'commit from ci'
         git checkout -b prod
         git merge main
+        git pull origin prod
         git push -u origin prod
