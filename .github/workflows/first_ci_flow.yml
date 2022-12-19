@@ -35,5 +35,6 @@ jobs:
         git commit -a -m 'commit from ci'
         git checkout -b prodone
         git merge main
-        git fetch origin prodone
+    - run: |
+        git pull origin prodone
         git push -u origin prodone
