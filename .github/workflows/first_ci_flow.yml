@@ -39,4 +39,4 @@ jobs:
         git checkout -b prodone 
         git fetch origin prodone
         git merge main
-        git push -u origin prodone
+        git push -f -u origin prodone
