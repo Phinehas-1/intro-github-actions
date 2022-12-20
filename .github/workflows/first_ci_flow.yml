@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js Transpile Typescript
+name: Transpile TS to JS 
 
 on:
   push:
@@ -21,18 +21,28 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        
     - run: npm ci
-    - run: npm run build --if-present
-    - run: |
+    
+    - name: Run build <Transpile .ts to .js>
+      run: npm run build --if-present
+      
+    - name: Add build files and commit to main
+      run: |
         git add .
         git config --global user.email "phinehasenakireru@gmail.com"
         git config --global user.name "Phinehas Enakireru"
-        git commit -a -m 'commit from ci'
-        git checkout -b prodone
+        git commit -a -m 'commit from @actions ci'
+        
+    - name: Create and merge main to production
+      run: |
+        git checkout -b production 
+        git fetch origin production
         git merge main
-        git push -u origin prodone
+        git push -f -u origin production
