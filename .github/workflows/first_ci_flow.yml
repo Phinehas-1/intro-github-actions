@@ -33,8 +33,9 @@ jobs:
         git config --global user.email "phinehasenakireru@gmail.com"
         git config --global user.name "Phinehas Enakireru"
         git commit -a -m 'commit from ci'
-        git checkout -b prodone
-        git merge main
+    # git checkout -b prodone
+    # git merge main
     - run: |
-        git pull origin prodone
+        git checkout -b prodone origin/prodone
+        git merge main
         git push -u origin prodone
