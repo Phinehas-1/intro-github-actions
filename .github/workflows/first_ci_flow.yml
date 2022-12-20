@@ -36,6 +36,7 @@ jobs:
     # git checkout -b prodone
     # git merge main
     - run: |
-        git checkout -b prodone origin/prodone
+        git checkout -b prodone 
+        git fetch origin prodone
         git merge main
         git push -u origin prodone
